@@ -24,22 +24,23 @@ def get_tasks():
     return render_template('index.html', tasks = tasks)
     
 @app.route('/task', methods = ["POST", "GET"])
-def task(): 
+def task():
     if request.method == 'POST':
         new_task = Todo(text = request.form['task'])
         # check if if the task is already present in the list or any duplicate of that
         task = Todo.query.filter_by(text = new_task.text).first()
         if task:
-           # If task exists, re-render with error message
+            # If task exists, re-render with error message
             tasks = Todo.query.order_by(Todo.date_created).all()
             return render_template('task.html', error_message="Task already exists", tasks=tasks)
+
         else:   
             new_task = Todo(text = request.form['task'])
             # add the new task to the database
             try:
                 db.session.add(new_task)
                 db.session.commit()
-                 # Fetch all tasks including the new one
+                # Fetch all tasks including the new one
                 tasks = Todo.query.order_by(Todo.date_created).all()
                 return render_template('task.html', tasks=tasks, success_message="Task added successfully")
             except Exception as e:
@@ -90,17 +91,23 @@ def toggle_task(id):
         task.completed = data.get('completed', False)
         # Commit changes to database
         db.session.commit()
+
+        status = "completed" if task.completed else "marked as incomplete"
         
         return jsonify({
             'success': True,
             'id': task.id,
-            'completed': task.completed
+            'completed': task.completed,
+            'message': f"Task {status} successfully",
+            'message_type': 'success'
         }), 200
     except Exception as e:
         db.session.rollback()
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': str(e),
+            'message': f"Failed to update task: {str(e)}",
+            'message_type': 'error'
         }), 500
         
 @app.errorhandler(404)

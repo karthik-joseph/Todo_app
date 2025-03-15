@@ -1,6 +1,18 @@
 {% extends 'base.html' %} {% block title %} Edit Tasks {% endblock %} {% block
 body %}
+
+<!-- show the messages if any -->
+<div class="notification-container">
+  {% if success_message %}
+  <p class="success_message">{{ success_message }}</p>
+  {% elif error_message %}
+  <p class="error_message">{{ error_message }}</p>
+  {% endif %}
+</div>
+
+<!-- Task manager -->
 <section class="task-container">
+  <a href="/" class="home">Go Back to Home</a>
   <h1>Flask Todo App</h1>
   <form method="POST" action="/task">
     <div class="input">
@@ -45,13 +57,7 @@ body %}
     {% endfor %}
   </div>
   {% else %}
-  <p>No tasks found</p>
-  {% endif %}
-  <!-- show the messages if any -->
-  {% if success_message %}
-  <p class="success_message">{{ success_message }}</p>
-  {% elif error_message %}
-  <p class="error_message">{{ error_message }}</p>
+  <p class="no-tasks">No tasks found</p>
   {% endif %}
 </section>
 {% endblock %}

@@ -8,15 +8,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const success_message = document.querySelector(".success_message");
   const error_message = document.querySelector(".error_message");
 
+  // Show success or error message after 2 seconds
   if (success_message) {
     setTimeout(() => {
-      success_message.style.display = "none";
+      success_message.classList.add("show");
     }, 2000);
   }
 
   if (error_message) {
     setTimeout(() => {
-      error_message.style.display = "none";
+      error_message.classList.add("show");
     }, 2000);
   }
   console.log("Checkboxes:", checkboxes);

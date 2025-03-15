@@ -102,7 +102,20 @@ section.task-container {
   filter: drop-shadow(0 1px 10px rgba(50, 16, 171, 0.6));
   min-height: 90vh;
 }
-
+section.task-container a.home {
+  background: var(--info);
+  padding: 1rem 1.5rem;
+  border-radius: 25px;
+  position: relative;
+  top: 20px;
+  left: -200px;
+  transition: background 0.3s ease;
+  color: var(--dark);
+}
+section.task-container a.home:hover {
+  background: var(--dark-light);
+  color: var(--warning);
+}
 section.task-container h1 {
   text-align: center;
   font-size: 2rem;
@@ -440,12 +453,43 @@ section.task-container form {
       -14px -8px 0 0px #4f29f0;
   }
 }
-section.task-container p {
+.task-container p {
   font-size: 1.5rem;
   text-align: center;
   margin-top: 1rem;
   color: var(--danger);
 }
-section.task-container .success_message {
-  color: var(--success);
+
+.notification-container .success_message {
+  background: var(--success);
+}
+.notification-container .error_message {
+  background: var(--warning);
+}
+.notification-container .success_message,
+.notification-container .error_message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: #fff;
+  max-width: 350px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  border: 1px solid var(--dark-light);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+  animation: slideIn 0.5s forwards;
+  margin-top: 10px;
+  opacity: 1;
+}
+.notification-container .success_message.show,
+.notification-container .error_message.show {
+  display: none;
 }
