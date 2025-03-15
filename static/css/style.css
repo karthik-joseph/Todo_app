@@ -14,6 +14,13 @@
   --light: #ecf0f1;
   --dark: #2c3e50;
   --dark-light: #34495e;
+  --background: #303952;
+  --text: #5d6474;
+  --check: #cc29f0;
+  --disabled: #d3c8de;
+  --width: 100%;
+  --height: auto;
+  --border-radius: 10px;
 }
 a {
   color: var(--dark);
@@ -192,13 +199,6 @@ section.task-container form {
   transition: 0.5s all;
 }
 #checklist {
-  --background: #303952;
-  --text: #5d6474;
-  --check: #cc29f0;
-  --disabled: #d3c8de;
-  --width: 100%;
-  --height: auto;
-  --border-radius: 10px;
   background: var(--background);
   width: var(--width);
   min-height: var(--height);
@@ -333,7 +333,6 @@ section.task-container form {
   animation: firework 0.5s ease forwards 0.1s;
 }
 
-/* Added styles for edit and delete buttons */
 .edit-btn,
 .delete-btn {
   text-decoration: none;
