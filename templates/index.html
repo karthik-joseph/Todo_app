@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %} Home page {% endblock %} {% block
+body %}
+<section class="bg-container">
+  <section class="index-container">
+    <h1>Welcome to the Task Manager</h1>
+    <a href="/task">Edit tasks</a>
+    <ul>
+      {% if tasks %} {% for task in tasks %}
+      <li>{{ task.text }}</li>
+      {% endfor %} {% else %}
+      <li class="no-tasks">No tasks found</li>
+      {% endif %}
+    </ul>
+  </section>
+</section>
+{% endblock %}

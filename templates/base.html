@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Todo App | {% block title %} {% endblock %}</title>
+    <!-- icon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static',filename = 'images/calendar-checklist.svg') }}"
+      width="50px"
+      height="50px"
+    />
+    <!-- stylesheets -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename = 'css/style.css') }}"
+    />
+    <script src="{{ url_for('static',filename = 'js/toggle_checkbox.js') }}"></script>
+  </head>
+  <body>
+    {% block body %} {% endblock %}
+  </body>
+</html>

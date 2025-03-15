@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% block title %} Edit Tasks {% endblock %} {% block
+body %}
+<section class="task-container">
+  <h1>Flask Todo App</h1>
+  <form method="POST" action="/task">
+    <div class="input">
+      <input
+        class="to-do-input"
+        placeholder="Your Tasks Go Here..."
+        name="task"
+        type="text"
+        required
+      />
+      <div class="todo-line">&nbsp;</div>
+    </div>
+    <button class="input button" type="submit">Add</button>
+  </form>
+
+  {% if tasks %}
+  <div id="checklist">
+    {% for task in tasks %}
+    <div class="todo-item">
+      <div class="todo-content">
+        <input
+          {%
+          if
+          task.completed
+          %}checked=""
+          {%
+          endif
+          %}
+          value="{{task.id}}"
+          name="r"
+          type="checkbox"
+          id="{{task.id}}"
+        />
+        <label for="{{task.id}}" class="todo-text">{{task.text}}</label>
+        <span class="todo-timestamp">{{task.date_created}}</span>
+      </div>
+      <div class="todo-actions">
+        <a href="/task/update/{{task.id}}" class="edit-btn"> ✏️ </a>
+        <a href="/task/delete/{{task.id}}" class="delete-btn">🗑️</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No tasks found</p>
+  {% endif %}
+  <!-- show the messages if any -->
+  {% if success_message %}
+  <p class="success_message">{{ success_message }}</p>
+  {% elif error_message %}
+  <p>{{ error_message }}</p>
+  {% endif %}
+</section>
+{% endblock %}
