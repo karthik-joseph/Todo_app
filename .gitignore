@@ -1,0 +1,9 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+venv/
+*.pyc
+.DS_Store
+.env
+.vscode/
+.pytest_cache/
+.mypy_cache/
