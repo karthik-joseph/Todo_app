@@ -6,6 +6,19 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   const success_message = document.querySelector(".success_message");
+  const error_message = document.querySelector(".error_message");
+
+  if (success_message) {
+    setTimeout(() => {
+      success_message.style.display = "none";
+    }, 2000);
+  }
+
+  if (error_message) {
+    setTimeout(() => {
+      error_message.style.display = "none";
+    }, 2000);
+  }
   console.log("Checkboxes:", checkboxes);
   // Add event listener to each checkbox
   checkboxes.forEach((checkbox) => {
