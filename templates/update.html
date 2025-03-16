@@ -1,10 +1,55 @@
 {% extends 'base.html' %} {% block title %} Update Task {% endblock %} {% block
 body %}
+<section class="update-container">
+  <h1>Update Task</h1>
+  <form id="updateForm" method="POST" action="/task/update/{{task.id}}">
+    <label for="task">Task:</label>
+    <input
+      type="text"
+      id="task"
+      name="content"
+      value="{{task.text}}"
+      required
+    />
+    <button type="submit">Update Task</button>
+  </form>
+</section>
 
-<h1>Update Task</h1>
-<form method="POST" action="/task/update/{{task.id}}">
-  <label for="task">Task:</label>
-  <input type="text" id="task" name="content" value="{{task.text}}" required />
-  <button type="submit">Update Task</button>
-</form>
+<!-- Popup Modal -->
+<div class="popup-overlay" id="successPopup">
+  <div class="popup-content">
+    <h2>Success!</h2>
+    <p>Task updated successfully</p>
+    <button onclick="redirectToTasks()">OK</button>
+  </div>
+</div>
+
+<script>
+  document
+    .getElementById("updateForm")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      fetch(this.action, {
+        method: "POST",
+        body: formData,
+      })
+        .then((response) => {
+          if (response.ok) {
+            document.getElementById("successPopup").classList.add("show");
+          } else {
+            throw new Error("Failed to update task");
+          }
+        })
+        .catch((error) => {
+          alert("Error: " + error.message);
+          window.location.href = "/task";
+        });
+    });
+
+  function redirectToTasks() {
+    window.location.href = "/task";
+  }
+</script>
 {% endblock %}
