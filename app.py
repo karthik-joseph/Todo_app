@@ -1,3 +1,6 @@
+# Copyright (c) 2025 [Your Name]
+# This source code is licensed under the MIT license found in the
+# LICENSE file in the root directory of this source tree.
 from datetime import datetime
 from flask import Flask, render_template, url_for, redirect,request, jsonify
 from flask_sqlalchemy import SQLAlchemy
