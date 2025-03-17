@@ -40,7 +40,7 @@ todo-app/
 │   │   └── style.css         # Main stylesheet
 │   ├── images/
 │   │   └── calendar-checklist.svg  # App icon
-|   |   └── todo-bg-image.jpg # App background image
+|   |   └── todo-bg-image.jpg       # App background image
 │   └── js/
 │       ├── toggle_checkbox.js      # Task completion toggle functionality
 │       └── update.js               # Task update form handling
