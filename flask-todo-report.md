@@ -14,6 +14,7 @@
 10. [Error Handling](#error-handling)
 11. [Recommendations for Improvement](#recommendations-for-improvement)
 12. [Conclusion](#conclusion)
+13. [License](#License)
 
 ## Introduction
 
@@ -49,6 +50,7 @@ todo-app/
 │   ├── index.html            # Homepage template
 │   ├── task.html             # Task management page template
 │   └── update.html           # Task update page template
+├── License                   # MIT License
 └── .gitignore                # Git ignore file
 ```
 
